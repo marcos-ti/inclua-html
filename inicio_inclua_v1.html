@@ -440,11 +440,6 @@
 
         /* Extra small devices (phones, 768px and down) */
         @media (max-width: 672px) {
-            body {
-                /* min-width: 400px; */
-                overflow: hidden;
-            }
-
             .antes_funciona {
                 background-color: #abd2cd;
                 grid-area: antes;
@@ -517,33 +512,12 @@
                 /* width: 400px; */
             }
 
-            .plataforma-container>h1 {
-                font-family: "Sora", sans-serif;
-                font-weight: 600;
-                font-size: 25px;
-            }
-
-            .brief-container>h1 {
-                font-family: "Sora", sans-serif;
-                font-weight: 600;
-                font-size: 25px;
-                padding-top: 35px;
-            }
-
             .manual-container>h1 {
                 font-family: "Sora", sans-serif;
                 font-weight: 600;
                 font-size: 25px;
                 padding-top: 25px;
                 /* width: 92%; */
-                text-align: center;
-            }
-
-            .brief-container>h1 {
-                font-family: "Sora", sans-serif;
-                font-weight: 600;
-                font-size: 25px;
-                padding-left: 50px;
                 text-align: center;
             }
 
@@ -622,12 +596,20 @@
             }
 
             .plataforma-container {
+                padding: 0px;
                 margin-left: 0px;
                 padding-left: 0px;
                 grid-area: "plataforma";
 
             }
 
+            .plataforma-container>h1 {
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 22px;
+                text-align: center;
+                padding: 25px 10px 0px 10px;
+            }
 
             .funciona {
                 display: grid;
@@ -682,6 +664,20 @@
                 grid-template-areas: "plataforma";
             }
 
+            .brief-container {
+                padding: 0px;
+                margin-left: 0px;
+                grid-area: "plataforma video";
+            }
+
+            .brief-container>h1 {
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 25px;
+                padding-top: 35px;
+                text-align: center;
+            }
+
             .guias-container>div>a {
                 color: #000000;
                 text-decoration: none;
@@ -698,16 +694,10 @@
                 grid-area: funciona;
             }
 
-            .plataforma-container {
-                margin-left: 0px;
-                padding-left: 0px;
-                grid-area: "plataforma";
-            }
-
-            .text-end {
+            /* .text-end {
                 text-align: center !important;
                 padding: 0;
-            }
+            } */
 
             .biblioteca {
                 font-family: "Sora", sans-serif;
@@ -727,14 +717,6 @@
                 font-size: 27px;
                 transition: 0.3s;
 
-            }
-
-            .plataforma-container>h1 {
-                font-family: "Sora", sans-serif;
-                font-weight: 600;
-                font-size: 25px;
-                text-align: center;
-                padding-top: 25px;
             }
 
             .depois_funciona {
