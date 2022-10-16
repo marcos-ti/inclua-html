@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;800&display=swap" rel="stylesheet" />
+
+<head>
+    <style>
+        :root {
+            --font-global: 22px;
+            --font-titulo: 3em;
+            --font-global-sm: 16px;
+            --font-titulo-sm: 18px;
+
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .antes_funciona {
+            background-color: #abd2cd;
+            grid-area: antes;
+        }
+
+
+        .depois_funciona {
+            background-color: #abd2cd;
+            grid-area: depois;
+            width: 120px;
+        }
+
+        .funciona {
+            display: grid;
+            /* min-height: 100vh; */
+            grid-template-columns: 1fr;
+            grid-template-rows: 72px;
+            grid-template-areas: "antes funciona depois";
+        }
+
+        .antes_funciona {
+            background-color: #abd2cd;
+            grid-area: antes;
+        }
+
+        .como_funciona {
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: var(--font-titulo);
+            padding: 0 40px;
+            background-color: none;
+            grid-area: funciona;
+        }
+
+        .depois_funciona {
+            background-color: #abd2cd;
+            grid-area: depois;
+            width: 120px;
+        }
+
+        /* REUSO DE CÓDIGO */
+        .saber {
+            display: grid;
+            /* min-height: 100vh; */
+            grid-template-columns: 1fr;
+            grid-template-rows: 72px;
+            grid-template-areas: "antes funciona depois";
+        }
+
+        .antes_saber {
+            background-color: #DEAFC8;
+            grid-area: antes;
+        }
+
+        .saber_mais {
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: var(--font-titulo);
+            padding: 0 40px;
+            background-color: none;
+            grid-area: funciona;
+        }
+
+        .depois_saber {
+            background-color: #DEAFC8;
+            grid-area: depois;
+            width: 120px;
+        }
+
+        /* REUSO DE CÓDIGO - FIM */
+
+        .inclua-texto {
+            font-family: "Sora", sans-serif;
+            padding: 40px;
+            font-size: var(--font-global);
+            grid-area: inclua;
+
+        }
+
+        .inclua-recursos-texto {
+            font-family: "Sora", sans-serif;
+            padding: 40px;
+            font-size: var(--font-global);
+            grid-area: inclua-recursos
+        }
+
+        .guias {
+            font-family: "Sora", sans-serif;
+            grid-area: guias;
+        }
+
+        .biblioteca {
+            font-family: "Sora", sans-serif;
+            grid-area: biblioteca;
+        }
+
+        .inclua-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 500px;
+            grid-template-areas: "inclua guias";
+        }
+
+        .inclua-grid2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "guias inclua";
+        }
+
+        .inclua-grid3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas:
+                "inclua guias ";
+        }
+
+        .inclua-recursos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "inclua-recursos biblioteca";
+        }
+
+        .grafico {
+            grid-area: grafico;
+            padding-top: 100px;
+
+        }
+
+        .resultado {
+            font-family: "Sora", sans-serif;
+            padding: 40px;
+            font-size: 20px;
+            grid-area: resultado;
+        }
+
+        .resultado-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 650px;
+            grid-template-areas: "result";
+
+        }
+
+        .resultado-flex {
+            display: flex;
+            flex-direction: row;
+            line-height: 75px;
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: var(--font-titulo);
+        }
+
+        .resultado>p.linha {
+            border-color: #ACCC83;
+            border-bottom-style: solid;
+            padding-top: 25px;
+            width: 25%;
+        }
+
+        .resultado-flex>div:nth-child(1) {
+            background-color: #ACCC83;
+            padding: 8px 35px;
+            margin-right: 50px;
+            margin-bottom: 50px;
+            text-align: center;
+            line-height: 75px;
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: var(--font-titulo)
+        }
+
+        .recurso-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "recursos";
+            margin-top: 100px;
+        }
+
+        .recurso-container {
+            padding: 45px;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .recurso-container>div {
+            padding: 8px 35px;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: var(--font-titulo);
+            grid-area: recursos;
+        }
+
+        .recurso-container>div:nth-child(1) {
+            background-color: #abd2cd;
+        }
+
+
+        /* Recurso Fim */
+
+        .diagnostico-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "diagnostico";
+        }
+
+        .diagnostico-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "diagnostico";
+        }
+
+        .diagnostico-container {
+            padding: 45px;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .diagnostico-container>div {
+            padding: 8px 35px;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: var(--font-titulo);
+            grid-area: diagnostico;
+        }
+
+        .diagnostico-container>div:nth-child(1) {
+            background-color: #abd2cd;
+        }
+
+        .guias-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .biblioteca-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .guias-container>div {
+            background-color: #abd2cd;
+            width: auto;
+            padding: 30px;
+            margin: 30px;
+            text-align: center;
+            line-height: 75px;
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: 40px;
+            transition: 0.3s;
+
+        }
+
+        .biblioteca-container>div {
+            background-color: #abd2cd;
+            width: auto;
+            padding: 30px;
+            margin: 30px;
+            text-align: center;
+            line-height: 75px;
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: 40px;
+            transition: 0.3s;
+
+        }
+
+        .guias-container>div:hover {
+            text-decoration: none;
+            background-color: #ffffff;
+            border-color: #000000;
+            border-style: solid;
+            border-width: thin;
+        }
+
+        .biblioteca-container>div:hover {
+            text-decoration: none;
+            background-color: #ffffff;
+            border-color: #000000;
+            border-style: solid;
+            border-width: thin;
+        }
+
+        .guias-container>div>a {
+            color: #000000;
+            text-decoration: none;
+
+        }
+
+        .biblioteca-container>div>a {
+            color: #000000;
+            text-decoration: none;
+
+        }
+
+        .inclua-texto>p.linha {
+            border-color: #abd2cd;
+            border-bottom-style: solid;
+            padding-top: 25px;
+            width: 25%;
+        }
+
+        .inclua-recursos-texto>p.linha {
+            border-color: #abd2cd;
+            border-bottom-style: solid;
+            padding-top: 25px;
+            width: 25%;
+        }
+
+        /* 3 - PLATAFORMA*/
+        .plataforma-grid {
+            /* padding: 100px 50px 0 0; */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            justify-items: center;
+            align-items: center;
+            grid-template-areas: "plataforma video";
+        }
+
+        .plataforma-container {
+            padding: 50px;
+            margin-left: 0px;
+            padding-left: 0px;
+            grid-area: "plataforma video";
+        }
+
+        .plataforma-container>h1 {
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: 40px;
+            text-align: right;
+        }
+
+        .plataforma-container>h1.linha-2 {
+            border-color: #FECB3F;
+            border-bottom-style: solid;
+            padding-top: 25px;
+            width: 100%;
+        }
+
+        /* 3 - MANUAL*/
+        .manual-grid {
+            /* padding: 100px 50px 0 0; */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            justify-items: center;
+            align-items: center;
+            grid-template-areas: "plataforma video";
+        }
+
+        .manual-container {
+            padding: 50px;
+            margin-left: 0px;
+            padding-left: 0px;
+            grid-area: "plataforma video";
+        }
+
+        .manual-container>h1 {
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: 40px;
+            padding-top: 25px;
+            width: 100%;
+            text-align: right;
+        }
+
+        .manual-container>h1.linha-2 {
+            border-color: #FECB3F;
+            border-bottom-style: solid;
+            padding-top: 25px;
+            width: 100%;
+        }
+
+        /* 3 - POLICY BRIEF*/
+        .brief-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            justify-items: center;
+            align-items: center;
+            grid-template-areas: "plataforma video";
+        }
+
+        .brief-container {
+            /* padding: 100px 50px 0 0; */
+            margin-left: 0px;
+            padding-left: 0px;
+            grid-area: "plataforma video";
+        }
+
+        .brief-container>h1 {
+            text-align: right;
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: 40px;
+            /* padding-right: 50px */
+        }
+
+        .brief-container>h1.linha-2 {
+            border-color: #FECB3F;
+            border-bottom-style: solid;
+            padding-top: 25px;
+            width: 100%;
+        }
+
+        /*VERSÃO MOBILE*/
+
+        /* Extra small devices (phones, 768px and down) */
+        @media (max-width: 672px) {
+            background {
+                /* min-width: 400px; */
+                overflow: hidden;
+            }
+
+            .guias {
+                font-family: "Sora", sans-serif;
+                height: 500px;
+                grid-area: guias;
+            }
+
+            .inclua-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 480px;
+                grid-template-areas:
+                    "inclua "
+                    "guias ";
+            }
+
+            .inclua-grid2 {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 320px;
+                grid-template-areas:
+                    "inclua";
+
+            }
+
+            .inclua-grid3 {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 480px;
+                grid-template-areas:
+                    "inclua "
+                    "guias ";
+            }
+
+            .resultados-container {
+                padding: 45px;
+                display: flex;
+                flex-wrap: nowrap;
+                padding-top: 100px;
+            }
+
+            .como_funciona {
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: var(--font-titulo-sm);
+                padding: 0 40px;
+                background-color: none;
+                grid-area: funciona;
+            }
+
+            .inclua-recursos-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 450px;
+                grid-template-areas: "inclua-recursos inclua-recursos"
+                    "biblioteca biblioteca";
+            }
+
+            .saber_mais {
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 30px;
+                padding: 0 20px;
+                background-color: none;
+                grid-area: funciona;
+                /* width: 400px; */
+            }
+
+            .plataforma-container>h1 {
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 25px;
+            }
+
+            .brief-container>h1 {
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 25px;
+                padding-top: 35px;
+            }
+
+            .manual-container>h1 {
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 25px;
+                padding-top: 25px;
+                /* width: 92%; */
+                text-align: center;
+            }
+
+            .brief-container>h1 {
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 25px;
+                padding-left: 50px;
+                text-align: center;
+            }
+
+            .guias2-container>div {
+                /* background-color: #abd2cd; */
+                width: auto;
+                /* padding: 30px; */
+                /* margin: 30px; */
+                text-align: center;
+                line-height: 75px;
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 40px;
+                transition: 0.3s;
+            }
+
+            .diagnostico-container {
+                padding: 45px;
+                display: flex;
+                flex-wrap: nowrap;
+                padding: 0;
+                /* width: 400px; */
+            }
+
+            .diagnostico-container>div {
+                padding: 8px 35px;
+                text-align: center;
+                line-height: 75px;
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 32px;
+                grid-area: diagnostico;
+                margin-left: 0%;
+            }
+
+            .diagnostico-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                grid-template-areas: "diagnostico";
+            }
+
+            .inclua-texto {
+                font-family: "Sora", sans-serif;
+                padding: 40px;
+                font-size: var(--font-global-sm);
+                grid-area: inclua;
+
+            }
+
+            .inclua-recursos-texto {
+                font-family: "Sora", sans-serif;
+                padding: 40px;
+                font-size: var(--font-global-sm);
+                grid-area: inclua-recursos
+            }
+
+
+            .biblioteca-container>div {
+                background-color: #abd2cd;
+                text-align: center;
+                line-height: 75px;
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 40px;
+                transition: 0.3s;
+            }
+
+            .plataforma-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                justify-items: center;
+                align-items: center;
+                grid-template-areas: "plataforma";
+            }
+
+            .plataforma-container {
+                margin-left: 0px;
+                padding-left: 0px;
+                grid-area: "plataforma";
+
+            }
+
+
+            .funciona {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 72px;
+                grid-template-areas: "antes funciona";
+            }
+
+            .recurso-container {
+                padding: 0;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 90px;
+            }
+
+            .recurso-container>div {
+                padding: 8px 35px;
+                /* margin: 10px; */
+                text-align: center;
+                line-height: 75px;
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 32px;
+                grid-area: recursos;
+            }
+
+            .recurso-container>div:nth-child(1) {
+                background-color: #abd2cd;
+                margin: 0;
+            }
+
+            .depois_saber {
+                background-color: #DEAFC8;
+                grid-area: depois;
+            }
+
+            .manual-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                /* justify-items: center;
+                align-items: center; */
+                grid-template-areas: "plataforma";
+            }
+
+            .brief-grid {
+                display: grid;
+                padding: 0;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                justify-items: right;
+                grid-template-areas: "plataforma";
+            }
+
+            .guias-container>div>a {
+                color: #000000;
+                text-decoration: none;
+                font-size: 25px;
+            }
+
+
+            .saber_mais {
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 21px;
+                padding: 20px;
+                background-color: none;
+                grid-area: funciona;
+            }
+
+            .plataforma-container {
+                margin-left: 0px;
+                padding-left: 0px;
+                grid-area: "plataforma";
+            }
+
+            .text-end {
+                text-align: center !important;
+                padding: 0;
+            }
+
+            .biblioteca {
+                font-family: "Sora", sans-serif;
+                grid-area: biblioteca;
+                height: 300px;
+            }
+
+            .biblioteca-container>div {
+                background-color: #abd2cd;
+                width: auto;
+                padding: 30px;
+                margin: 30px;
+                text-align: center;
+                line-height: 75px;
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 27px;
+                transition: 0.3s;
+
+            }
+
+            .plataforma-container>h1 {
+                font-family: "Sora", sans-serif;
+                font-weight: 600;
+                font-size: 25px;
+                text-align: center;
+                padding-top: 25px;
+            }
+
+            .depois_funciona {
+                background-color: #abd2cd;
+                grid-area: depois;
+                width: 0px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <section class="funciona">
+        <section class="antes_funciona"></section>
+        <section class="como_funciona">COMO FUNCIONA?</section>
+        <section class="depois_funciona"></section>
+    </section>
+    <!--Diagnostico-->
+
+    <section class="diagnostico-grid">
+        <section class="diagnostico-container">
+            <div>1</div>
+            <div>Diagnóstico</div>
+        </section>
+        </div>
+        <section class="inclua-grid3">
+            <section class="inclua-texto">
+                <p>A INCLUA auxilia equipes que executam ofertas públicas (programas, projetos, ações ou serviços) a
+                    avaliar
+                    a qualidade do acesso e da experiência dos cidadãos atendidos, chamando atenção para os riscos de
+                    desatenção, tratamento inadequado e exclusão de segmentos específicos.</p>
+
+                <p> O diagnóstico é um exercício de autorreflexão, formação e qualificação contínua e pode ser realizado
+                    por
+                    meio do Guia INCLUA ou pelo diagnóstico online.</p>
+
+                <p> Vamos lá?</p>
+                <!--Linha azul-->
+                <p class="linha"></p>
+
+            </section>
+            <section class="guias">
+                <div class="guias-container">
+                    <div><a href="#">GUIAS</a></div>
+                    <div><a href="#">DIAGNÓSTICO ONLINE</a></div>
+                </div>
+            </section>
+        </section>
+    </section>
+    <!--Diagnostico Fim-->
+
+    <!--Reuso de código-->
+    <!--Diagnostico-2-->
+
+    <section class="resultados-grid">
+        <section class="diagnostico-container">
+            <div>2</div>
+            <div>Resultados</div>
+        </section>
+        </div>
+        <section class="inclua-grid2">
+            <section class="inclua-texto">
+                <p>É preciso estar atento!</p>
+                <p> Os resultados do diagnóstico são apresentados a partir de 5 dimensões de análise e 13 indicadores.
+                </p>
+                <p>Isso permite a visualização dos tipos de riscos e em que grau eles se manifestam na implementação da
+                    oferta pública em avaliação.
+                </p>
+                <p>Os riscos identificados apontam para aspectos da operacionalização da oferta pública que podem estar
+                    prejudicando o acesso e a experiência de segmentos específicos do público atendido.</p>
+
+                <!--Linha azul-->
+                <p class="linha"></p>
+                </div>
+            </section>
+            <section class="guias">
+                <div class="guias2-container">
+                    <div class="grafico"><img src="img/GRAFICO.png" class="img-fluid"
+                            alt="Gráfico ilustrativo de resultados">
+                    </div>
+                </div>
+            </section>
+        </section>
+    </section>
+    <!--Diagnostico-2 Fim-->
+
+
+    <!--Reuso de código-->
+    <section class="recurso-grid">
+        <section class="recurso-container">
+            <div>3</div>
+            <div>Recurso</div>
+        </section>
+        </div>
+        <section class="inclua-recursos-grid">
+            <section class="inclua-recursos-texto">
+                <p>As limitações e riscos identificados precisam ser enfrentados.</p>
+
+                <p>A INCLUA indica recursos (ideias, experiências, metodologias, etc.) pertinentes que podem auxiliar no
+                    desenvolvimento de intervenções pró-equidade e medidas concretas para aprimorar o acesso e a
+                    qualidade
+                    da experiência dos públicos atendidos.</p>
+
+                <p>Esses recursos também podem ser acessados por meio da biblioteca e das curadorias temáticas. São
+                    fontes
+                    de inspiração para a ação imediata!</p>
+                <!--Linha azul-->
+                <p class="linha"></p>
+
+            </section>
+            <section class="biblioteca">
+                <div class="biblioteca-container">
+                    <div><a href="#">BIBLIOTECA</a></div>
+                    <div><a href="#">CURADORIA</a></div>
+                </div>
+            </section>
+        </section>
+    </section>
+
+    <!--Reuso de código -->
+    <section class="funciona">
+        <section class="antes_funciona"></section>
+        <section class="como_funciona">QUER SABER MAIS?</section>
+        <section class="depois_funciona"></section>
+    </section>
+    <!--Reuso de código - Fim-->
+
+    <!--PLATAFORMA-->
+    <section class="plataforma-grid">
+        <section class="container-fluid plataforma-container">
+            <h1>COMO USAR A PLATAFORMA</h1>
+            <!--Linha laranja-->
+            <h1 class="linha-2"></h1>
+        </section>
+
+        <section class="video-container">
+            <div class="grafico"><img src="img/video.png" class="img-fluid"
+                    alt="Vídeo ilustrativo de material instrucional">
+            </div>
+        </section>
+    </section>
+    <!--MANUAL-->
+    <section class="manual-grid">
+        <section class="container-fluid manual-container">
+            <h1>MANUAL</h1>
+            <!--Linha laranja-->
+            <h1 class="linha-2"></h1>
+        </section>
+
+        <section class="manual-container">
+            <div class="grafico "><img src="img/MANUAL_DE_ACESSO.png" class="img-fluid"
+                    alt="Gráfico ilustrativo de resultados">
+            </div>
+        </section>
+    </section>
+    <!--POLICY BRIEF-->
+    <section class="brief-grid">
+        <section class="container-fluid  brief-container">
+            <h1>POLICY BRIEF</h1>
+            <!--Linha laranja-->
+            <h1 class="linha-2"></h1>
+        </section>
+
+        <section class="brief-container">
+            <div class="grafico "><img src="img/POLICY_BRIEF.png" class="img-fluid"
+                    alt="Gráfico ilustrativo de resultados">
+            </div>
+        </section>
+    </section>
+</body>
+
+</html>
