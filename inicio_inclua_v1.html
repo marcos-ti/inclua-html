@@ -18,6 +18,7 @@
             --azul: #ABD2CD;
             --verde: #ACCC83;
             --laranja: #FDCA3D;
+            --rosa: #DEAFC8;
 
         }
 
@@ -260,7 +261,7 @@
         }
 
         .diagnostico-container>div:nth-child(1) {
-            background-color: #abd2cd;
+            background-color: var(--verde);
         }
 
         .guias-container {
@@ -449,6 +450,11 @@
 
             .antes_funciona {
                 background-color: #abd2cd;
+                grid-area: antes;
+            }
+
+            .antes_funciona_quer {
+                background-color: var(--rosa);
                 grid-area: antes;
             }
 
@@ -644,7 +650,7 @@
             }
 
             .recurso-container>div:nth-child(1) {
-                background-color: #abd2cd;
+                background-color: var(--laranja);
                 margin: 0;
             }
 
@@ -713,7 +719,7 @@
             }
 
             .biblioteca-container>div {
-                background-color: #abd2cd;
+                background-color: var(--laranja);
                 width: auto;
                 padding: 30px;
                 margin: 30px;
@@ -866,7 +872,7 @@
 
     <!--Reuso de código -->
     <section class="funciona">
-        <section class="antes_funciona"></section>
+        <section class="antes_funciona_quer"></section>
         <section class="como_funciona">QUER SABER MAIS?</section>
         <section class="depois_funciona"></section>
     </section>
