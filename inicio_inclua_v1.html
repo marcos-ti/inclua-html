@@ -11,7 +11,9 @@
     <style>
         :root {
             --font-global: 22px;
-            --font-titulo: 3em;
+            --font-titulo: 2.25em;
+            --font-titulo-link: 2em;
+            --font-titulo-link-mobile: 0.8em;
             --font-global-sm: 16px;
             --font-titulo-sm: 22px;
             --guias: 20px;
@@ -96,7 +98,7 @@
 
         .inclua-texto {
             font-family: "Sora", sans-serif;
-            padding: 40px;
+            padding: 0px 40px;
             font-size: var(--font-global);
             grid-area: inclua;
 
@@ -117,6 +119,7 @@
         .biblioteca {
             font-family: "Sora", sans-serif;
             grid-area: biblioteca;
+            margin-bottom: 100px;
         }
 
         .inclua-grid {
@@ -150,7 +153,26 @@
 
         .grafico {
             grid-area: grafico;
-            padding-top: 100px;
+            padding: 150px;
+            margin: -139px 0 0 0;
+
+        }
+
+        .grafico-video {
+            grid-area: grafico;
+            padding: 50px;
+
+        }
+
+        .grafico-manual {
+            grid-area: grafico;
+            padding: 50px;
+
+        }
+
+        .grafico-brief {
+            grid-area: grafico;
+            padding: 50px;
 
         }
 
@@ -207,6 +229,7 @@
 
         .recurso-container {
             padding: 45px;
+            margin-top: -150px;
             display: flex;
             flex-wrap: nowrap;
         }
@@ -223,7 +246,7 @@
         }
 
         .recurso-container>div:nth-child(1) {
-            background-color: #abd2cd;
+            background-color: var(--laranja);
         }
 
 
@@ -284,32 +307,25 @@
 
         .guias-container>div {
             background-color: #abd2cd;
+            /* padding: 30px; */
             width: auto;
-            padding: 30px;
-            margin: 30px;
+            height: 120px;
+            margin: 0 0 50px 0; 
             text-align: center;
             line-height: 75px;
             font-family: "Sora", sans-serif;
             font-weight: 600;
-            font-size: 40px;
+            font-size: var(--font-titulo-link);
             transition: 0.3s;
 
         }
-
-        .biblioteca-container>div {
-            background-color: #abd2cd;
-            width: auto;
-            padding: 30px;
-            margin: 30px;
-            text-align: center;
-            line-height: 75px;
-            font-family: "Sora", sans-serif;
-            font-weight: 600;
-            font-size: 40px;
-            transition: 0.3s;
+        .guias-container>div>a {
+            padding-top: 20px;
+            height: 100px;
+            color: #000000;
+            text-decoration: none;
 
         }
-
         .guias-container>div:hover {
             text-decoration: none;
             background-color: #ffffff;
@@ -317,6 +333,34 @@
             border-style: solid;
             border-width: thin;
         }
+        a:link, a:visited {
+        background-color: transparent;
+        color: white;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        }
+
+        a:hover, a:active {
+        background-color: transparent;
+        }
+
+        .biblioteca-container>div {
+            background-color: var(--laranja);
+            width: auto;
+            padding: 30px;
+            margin: 30px;
+            text-align: center;
+            line-height: 75px;
+            font-family: "Sora", sans-serif;
+            font-weight: 600;
+            font-size: var(--font-titulo-link);
+            transition: 0.3s;
+
+        }
+
+        
 
         .biblioteca-container>div:hover {
             text-decoration: none;
@@ -326,12 +370,7 @@
             border-width: thin;
         }
 
-        .guias-container>div>a {
-            color: #000000;
-            text-decoration: none;
-
-        }
-
+       
         .biblioteca-container>div>a {
             color: #000000;
             text-decoration: none;
@@ -353,8 +392,8 @@
 
         /* 3 - PLATAFORMA*/
         .plataforma-grid {
-            /* padding: 100px 50px 0 0; */
             display: grid;
+            margin-top: 75px;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr;
             justify-items: center;
@@ -511,6 +550,7 @@
                 font-weight: 600;
                 font-size: var(--font-titulo-sm);
                 padding: 0 40px;
+                margin-bottom: 50px;
                 background-color: none;
                 grid-area: funciona;
             }
@@ -583,7 +623,7 @@
 
             .inclua-texto {
                 font-family: "Sora", sans-serif;
-                padding: 40px;
+                /* padding: 40px; */
                 font-size: var(--font-global-sm);
                 grid-area: inclua;
 
@@ -597,16 +637,7 @@
             }
 
 
-            .biblioteca-container>div {
-                background-color: #abd2cd;
-                text-align: center;
-                line-height: 75px;
-                font-family: "Sora", sans-serif;
-                font-weight: 600;
-                font-size: 40px;
-                transition: 0.3s;
-            }
-
+           
             .plataforma-grid {
                 display: grid;
                 grid-template-columns: 1fr;
@@ -636,7 +667,7 @@
                 display: grid;
                 grid-template-columns: 1fr;
                 grid-template-rows: 40px;
-                grid-template-areas: "antes funciona";
+                grid-template-areas: "antes funciona depois";
             }
 
             .recurso-container {
@@ -702,7 +733,7 @@
             .guias-container>div>a {
                 color: #000000;
                 text-decoration: none;
-                font-size: var(--guias);
+                font-size: 20px;
             }
 
 
@@ -754,7 +785,7 @@
 
             .grafico {
                 grid-area: grafico;
-                padding-top: 10px;
+                /* padding-top: 10px; */
 
             }
 
@@ -764,6 +795,11 @@
                 padding-left: 0px;
                 grid-area: "plataforma video";
             }
+            .guias-container {
+    /* background-color: #abd2cd; */
+    padding: 30px;
+    height: 30px;
+}
         }
     </style>
 </head>
@@ -805,7 +841,7 @@
                     <div><a href="https://inclua.ipea.gov.br/guias" target="_self">GUIAS</a></div>
                     <div><a href="https://inclua.ipea.gov.br/diagnostico" target="_self">DIAGNÓSTICO ONLINE</a></div>
                 </div>
-            </section>
+            </section></a>
         </section>
     </section>
     <!--Diagnostico Fim-->
@@ -880,7 +916,7 @@
 
     <!--Reuso de código -->
     <section class="funciona">
-        <section class="antes_funciona_quer"></section>
+        <section class="antes_funciona"></section>
         <section class="como_funciona">QUER SABER MAIS?</section>
         <section class="depois_funciona"></section>
     </section>
@@ -895,7 +931,7 @@
         </section>
 
         <section class="video-container">
-            <div class="grafico"><img src="img/video.png" class="img-fluid"
+            <div class="grafico-video"><img src="img/video.png" class="img-fluid"
                     alt="Vídeo ilustrativo de material instrucional">
             </div>
         </section>
@@ -909,7 +945,7 @@
         </section>
 
         <section class="manual-container">
-            <div class="grafico "><a href="https://inclua.ipea.gov.br/manual" target="_blank"><img
+            <div class="grafico-manual "><a href="https://inclua.ipea.gov.br/manual" target="_blank"><img
                         src="img/MANUAL_DE_ACESSO.png" class="img-fluid" alt="Gráfico ilustrativo de resultados"></a>
             </div>
         </section>
@@ -923,7 +959,7 @@
         </section>
 
         <section class="brief-container">
-            <div class="grafico "><a
+            <div class="grafico-brief "><a
                     href="https://repositorio.ipea.gov.br/bitstream/11058/11244/1/EmQuestao_n14_Inclua.pdf"
                     target="_blank"><img src="img/POLICY_BRIEF.png" class="img-fluid"
                         alt="Gráfico ilustrativo de resultados">
