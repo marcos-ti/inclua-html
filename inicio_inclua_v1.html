@@ -156,8 +156,8 @@
 
         .grafico {
             grid-area: grafico;
-            padding: 50px;
-            margin: 181px 0 0 0;
+            padding: 140px;
+            margin: -100px 0 0 0;
         }
 
         .grafico-video {
@@ -497,22 +497,21 @@
 
 
         /* Extra large devices (large laptops and desktops, 1200px and up) */
-        @media only screen and (min-width: 1200px) {
-            .grafico {
-                grid-area: grafico;
-                padding: 150px;
-                margin: -115px 0 0 0;
-            }
-        }
-
         /* Large devices (laptops/desktops, 992px and up) */
-        @media only screen and (min-width: 992px) {
+
+        @media (max-width: 1200px) {
+            body {
+                overflow-x: hidden;
+            }
+
             .grafico {
                 grid-area: grafico;
                 padding: 100px;
-                margin: 50px 0 0 0;
+                margin: -40px 0 0 0;
             }
+
         }
+
 
         @media (max-width: 768px) {
             body {
